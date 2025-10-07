@@ -7,17 +7,24 @@ public class Cuenta {
 	String titular;
 	
 	
-	public Cuenta(double saldo) {
+	public Cuenta(double saldo, String numero) {
 		this.saldo = saldo;
+		this.numero = numero;
 	}
 
-	public void ingresar(double saldo) {
-		this.saldo = 500.0;
+	public void Ingresar(double saldo) {
+		this.saldo += saldo;
 		
 	}
 	
 	public void Retirar(double saldo) {
-		this.saldo = -500.0;
+		if(this.saldo - saldo < -500) {
+			System.out.println("Fondos insuficientes (saldo " + this.saldo + ") en la cuenta " + this.numero + " para el reintegro de " + saldo);
+		}
+		else {
+			this.saldo -= saldo;
+		}
+		 
 	}
 
 	public double getSaldo() {
